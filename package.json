@@ -1,7 +1,7 @@
 {
   "name": "vue-demo",
   "version": "1.0.0",
-  "description": "基于V2EX API的Vue实践",
+  "description": "基于V2EX API的Vue练手项目",
   "author": "bergwhite <bergwhites@gmail.com>",
   "private": true,
   "scripts": {
