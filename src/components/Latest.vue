@@ -17,24 +17,10 @@ export default {
     return {
       latest: this.$parent._data.latest
     }
-  },
-  props: {
-    s: 's'
-  },
-  /*
-  ready () {
-    this.getJSON('/api/topics/latest.json', 'latest')
-    // this.getJSON('/api/topics/hot.json', 'hot')
-  }
-  */
-  created () {
-    // this.$parent.getJSON('/api/topics/latest.json', 'latest')
-    // this.getJSON('/api/topics/hot.json', 'hot')
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 </style>

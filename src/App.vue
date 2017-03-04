@@ -1,11 +1,9 @@
 <template>
   <div id="app">
     <div class="nav">
-      <!--<img src="" class="logo">-->
       <div class="topic">
         <a href="/#">最新</a>
         <a href="/#/Hot">热门</a>
-        <!--<a href="/#/Article">文章</a>-->
       </div>
     </div>
       <router-view></router-view>
@@ -45,10 +43,9 @@ export default {
 </script>
 
 <style>
-::selection {
-  color: red;
-  background-color: white;
-}
+
+/* 重置 */
+
 body {
   margin: 0;
 }
@@ -66,12 +63,25 @@ a {
   text-decoration: none;
   color: black;
 }
+
+/* 选中时 */
+
+::selection {
+  color: red;
+  background-color: white;
+}
+
+/* 默认 */
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 }
+
+/* 导航 */
+
 .nav>.topic {
   overflow:hidden;
   padding: 20px;
@@ -86,6 +96,9 @@ a {
   background-color: #2196f3;
   color: white;
 }
+
+/* 正文 */
+
 .articles {
   margin-bottom: 60px;
 }
@@ -105,6 +118,9 @@ a {
   color: white;
   background-color: #009688;
 }
+
+/* 底部 */
+
 .footer {
   background-color: #795548;
   color: white;

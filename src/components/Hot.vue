@@ -17,14 +17,6 @@ export default {
     return {
       hot: this.$parent._data.hot
     }
-  },
-  created () {
-    // this.$parent.getJSON('/api/topics/hot.json', 'hot')
-  },
-  methods: {
-    ge: function () {
-      console.log(self)
-    }
   }
 }
 </script>
