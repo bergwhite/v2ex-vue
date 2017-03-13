@@ -2,6 +2,10 @@
 
 基于V2EX API的Vue练手项目。模板使用的是vue-cli。，数据使用proxyTable代理。通过xmlHttpRequest获取。
 
+## 在线演示
+
+项目已上线，点击[vue-demo](http://berg-lab.com/vue-demo/#/)查看。
+
 ## 使用步骤
 
 ``` bash
