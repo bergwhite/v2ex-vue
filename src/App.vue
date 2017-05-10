@@ -1,9 +1,10 @@
 <template>
   <div id="app">
     <div class="nav">
+      <div class="logo">V2EX-Vue</div>
       <div class="topic">
-        <a href="/#">最新</a>
-        <a href="/#/Hot">热门</a>
+        <router-link to="/">最新</router-link>
+        <router-link to="/Hot">热门</router-link>
       </div>
     </div>
       <router-view></router-view>
@@ -52,9 +53,9 @@ body {
 * {
   box-sizing: border-box;
 }
-ul {
+ul,li,p {
   margin:0;
-  padding-left:0;
+  padding: 0;
 }
 li {
   list-style-type:none;
@@ -82,17 +83,25 @@ a {
 
 /* 导航 */
 
-.nav>.topic {
-  overflow:hidden;
+.nav {
+  overflow: hidden;
+}
+.logo,.topic {
   padding: 20px;
+}
+.logo {
+  float: left;
+}
+.topic {
+  overflow:hidden;
   padding-bottom: 0px;
 }
-.nav>.topic>a {
+.topic>a {
   float:left;
   padding:5px;
   border-bottom:1px solid white;
 }
-.nav>.topic>a:hover {
+.topic>a:hover {
   background-color: #2196f3;
   color: white;
 }
@@ -108,15 +117,30 @@ a {
 .article {
   padding: 10px 20px;
 }
+.title,.content,.info {
+  padding: 20px 40px;
+}
 .title {
   background-color: #2196f3;
   color:white;
-  padding: 20px 40px;
 }
 .content {
-  padding: 20px 40px;
-  color: white;
-  background-color: #009688;
+  color: black;
+  background-color: white;
+  border: 1px solid #2196f3;
+  border-bottom: 0;
+}
+.info {
+  border: 1px solid #2196f3;
+  border-top: 0;
+  padding-top: 0;
+}
+.info-img {
+  float: left;
+}
+.info-more {
+  overflow: hidden;
+  padding-left: 10px;
 }
 
 /* 底部 */

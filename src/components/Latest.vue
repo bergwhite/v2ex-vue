@@ -5,7 +5,15 @@
       <a :href="x.url" target="_black">
         <p class="title">{{ x.title }}</p>
       </a>
-      <div class="content">{{ x.content }}</div>
+      <div class="content" v-html="compiledMarkdown(x.content)"></div>
+      <div class="info">
+        <img class="info-img" :src="x.member.avatar_normal"></img>
+        <div class="info-more">
+          <p class="info-user">{{ x.member.username }}</p>
+          <!-- <p class="info-time" v-html="'发表 '+transTime(x.created)"></p> -->
+          <p class="info-comm">回复 {{ x.replies }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -16,6 +24,16 @@ export default {
   data () {
     return {
       latest: this.$parent._data.latest
+    }
+  },
+  methods: {
+    compiledMarkdown (txt) {
+      return this.$marked(txt, { sanitize: true })
+    },
+    transTime (time) {
+      const tm = new Date(time)
+      const tmArr = [tm.getFullYear(), tm.getMonth() + 1, tm.getDay()]
+      return tmArr.join('-')
     }
   }
 }
