@@ -64,6 +64,9 @@ a {
   text-decoration: none;
   color: black;
 }
+img {
+  max-width: 100%;  /* support for mobile*/
+}
 
 /* 选中时 */
 
@@ -79,6 +82,9 @@ a {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 /* 导航 */
@@ -131,6 +137,7 @@ a {
   border-bottom: 0;
 }
 .info {
+  overflow: hidden;
   border: 1px solid #2196f3;
   border-top: 0;
   padding-top: 0;
