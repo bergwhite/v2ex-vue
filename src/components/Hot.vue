@@ -1,7 +1,7 @@
 <template>
   <div class="articles">
     <h1 class="tag">热门</h1>
-    <div class="article" v-for="x in hot">
+    <div class="article" v-for="x in updateJSON">
   	  <a :href="x.url" target="_black">
   	    <p class="title">{{ x.title }}</p>
   	  </a>
@@ -20,10 +20,10 @@
 
 <script>
 export default {
-  name: 'Hot',
+  name: 'hot',
   data () {
     return {
-      hot: this.$parent._data.hot
+      hot: ''
     }
   },
   methods: {
@@ -34,6 +34,12 @@ export default {
       const tm = new Date(time)
       const tmArr = [tm.getFullYear(), tm.getMonth() + 1, tm.getDay()]
       return tmArr.join('-')
+    }
+  },
+  computed: {
+    updateJSON () {
+      this.hot = this.$parent._data.hot
+      return this.hot
     }
   }
 }

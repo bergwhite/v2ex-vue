@@ -7,7 +7,7 @@
         <router-link to="/Hot">热门</router-link>
       </div>
     </div>
-      <router-view></router-view>
+    <router-view></router-view>
     <div class="footer">模板使用的是vue-cli。数据使用proxyTable代理，通过xmlHttpRequest获取。</div>
   </div>
 </template>
@@ -26,7 +26,7 @@ export default {
     this.getJSON('/api/topics/hot.json', 'hot')
   },
   methods: {
-    getJSON: function (url, tag) {
+    getJSON (url, tag) {
       var current = this
       var XMLHttp = new XMLHttpRequest()
       XMLHttp.onreadystatechange = function () {
