@@ -123,6 +123,9 @@ img {
 .article {
   padding: 10px 20px;
 }
+.title,.content {
+  word-break: break-all;
+}
 .title,.content,.info {
   padding: 20px 40px;
 }
