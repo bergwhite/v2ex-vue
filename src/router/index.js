@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Latest from '@/components/Latest'
-import Hot from '@/components/Hot'
+import Topic from '@/components/Topic'
+import TopicList from '@/components/TopicList'
 
 Vue.use(Router)
 
@@ -9,13 +9,18 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Latest',
-      component: Latest
+      name: 'Topic',
+      component: Topic
     },
     {
-      path: '/hot',
-      name: 'Hot',
-      component: Hot
+      path: '/topic',
+      name: 'TopicList',
+      component: TopicList
+    },
+    {
+      path: '/topic/:name',
+      name: 'Topic',
+      component: Topic
     }
   ]
 })

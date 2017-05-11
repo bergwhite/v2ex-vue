@@ -3,49 +3,25 @@
     <div class="nav">
       <div class="logo">V2EX-Vue</div>
       <div class="topic">
-        <router-link to="/">最新</router-link>
-        <router-link to="/Hot">热门</router-link>
+        <router-link to="/">首页</router-link>
+        <router-link to="/topic/hot">热门</router-link>
+        <router-link to="/topic">全部</router-link>
       </div>
     </div>
     <router-view></router-view>
-    <div class="footer">模板使用的是vue-cli。数据使用proxyTable代理，通过xmlHttpRequest获取。</div>
+    <div class="footer">Developed by Vue &amp; Vue-router &amp; Vuex &amp; axios.</div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app',
-  data () {
-    return {
-      latest: '',
-      hot: ''
-    }
-  },
-  created () {
-    this.getJSON('/api/topics/latest.json', 'latest')
-    this.getJSON('/api/topics/hot.json', 'hot')
-  },
-  methods: {
-    getJSON (url, tag) {
-      var current = this
-      var XMLHttp = new XMLHttpRequest()
-      XMLHttp.onreadystatechange = function () {
-        if (XMLHttp.readyState === 4 && XMLHttp.status === 200) {
-          var result = JSON.parse(XMLHttp.responseText)
-          current._data[tag] = result
-          console.log(current._data[tag])
-        }
-      }
-      XMLHttp.open('GET', url, true)
-      XMLHttp.send()
-    }
-  }
+  name: 'app'
 }
 </script>
 
 <style>
 
-/* 重置 */
+/* reset */
 
 body {
   margin: 0;
@@ -68,14 +44,14 @@ img {
   max-width: 100%;  /* support for mobile*/
 }
 
-/* 选中时 */
+/* when select */
 
 ::selection {
   color: red;
   background-color: white;
 }
 
-/* 默认 */
+/* default */
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -83,11 +59,10 @@ img {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   width: 100%;
-  max-width: 100%;
   overflow: hidden;
 }
 
-/* 导航 */
+/* nav */
 
 .nav {
   overflow: hidden;
@@ -97,8 +72,10 @@ img {
 }
 .logo {
   float: left;
+  margin-top: 8px;  /* align the layout */
 }
 .topic {
+  width: 200px;
   overflow:hidden;
   padding-bottom: 0px;
 }
@@ -112,7 +89,7 @@ img {
   color: white;
 }
 
-/* 正文 */
+/* content */
 
 .articles {
   margin-bottom: 60px;
@@ -153,7 +130,7 @@ img {
   padding-left: 10px;
 }
 
-/* 底部 */
+/* footer */
 
 .footer {
   background-color: #795548;
