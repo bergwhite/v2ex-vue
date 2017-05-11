@@ -9,9 +9,22 @@
 * 项目使用Vue全家桶开发，具有参考意义
 * ...
 
-## 三、解决方案
+## 三、项目安装
 
-### 3.1 跨域方案
+项目兼容IE9+，使用项目前，请确保安装好了NodeJS。
+
+```
+
+git clone https://github.com/bergwhite/v2ex-vue.git  // 克隆项目
+cd v2ex-vue  // 进入项目目录
+npm install  // 安装依赖
+npm run dev  // 运行项目
+
+```
+
+## 四、解决方案
+
+### 4.1 跨域方案
 
 通过配置代理表实现跨域
 
@@ -31,7 +44,7 @@ proxyTable: {
 
 ```
 
-### 3.2 Vuex支持IE
+### 4.2 Vuex支持IE
 
 直接引入Vuex无法在IE中显示
 
