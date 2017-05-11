@@ -20,7 +20,7 @@
       return {}
     },
     created () {
-      this.$store.dispatch('getJSON', 'nodeAll')
+      this.$store.dispatch('getTopic', 'nodeAll')
       this.val = this.$store.getters.getApiVal
     }
   }
@@ -36,7 +36,7 @@
   .node {
     border: 1px solid #2196f3;
     display: block;
-    width: 175px;
+    width: 130px;
     height: 100px;
     padding: 10px 20px;
     margin: 0 20px 20px 0;

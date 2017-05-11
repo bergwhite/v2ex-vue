@@ -1,3 +1,4 @@
+import 'babel-polyfill'
 import Vue from 'vue'
 import Marked from 'marked'  // markdown to html
 import App from './App'

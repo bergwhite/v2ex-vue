@@ -50,11 +50,12 @@ export default {
       return tmArr.join('-')
     },
     getTopicName () {
-      return this.topicNameList[this.$route.params.name]
+      return this.topicNameList[this.$route.params.name] || this.$route.params.name
     },
     updateVal () {
-      this.$store.dispatch('getJSON', this.$route.params.name || 'latest')
+      this.$store.dispatch('getTopic', this.$route.params.name)
       this.val = this.$store.getters.getApiVal
+      console.log(this.$route.params.name)
     }
   }
 }
