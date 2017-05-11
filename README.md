@@ -1,19 +1,46 @@
-# vue-demo
+## 一、开发背景
 
-基于V2EX API的Vue练手项目。模板使用的是vue-cli。，数据使用proxyTable代理。通过xmlHttpRequest获取。
+为了全面的熟悉Vue+Vue-router+Vuex+axios技术栈，结合V2EX的开放API开发了这个简洁版的V2EX。
 
-## 在线演示
+## 二、项目优势
 
-项目已上线，点击[vue-demo](http://berg-lab.com/vue-demo/#/)查看。
+* 界面非常简洁
+* 可以满足一般的浏览需求
+* 项目使用Vue全家桶开发，具有参考意义
+* ...
 
-## 使用步骤
+## 三、解决方案
 
-``` bash
+### 3.1 跨域方案
 
-# 安装依赖
-npm install
+通过配置代理表实现跨域
 
-# 本地运行
-npm run dev
+```
+
+config/index.js
+-------------------
+proxyTable: {
+  '/api': {
+    target: 'https://www.v2ex.com',
+    changeOrigin: true,
+    pathRewrite: {
+      '^/api': '/api'
+    }
+  }
+}
+
+```
+
+### 3.2 Vuex支持IE
+
+直接引入Vuex无法在IE中显示
+
+```
+
+npm install babel-polyfill --save-dev  // 安装babel-polyfill
+
+src/main.js
+---------------
+import 'babel-polyfill'  // 在vue主文件中导入
 
 ```
