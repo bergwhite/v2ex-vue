@@ -9,7 +9,7 @@
       </div>
     </div>
     <router-view></router-view>
-    <div class="footer">Developed by Vue &amp; Vue-router &amp; Vuex &amp; axios.</div>
+    <div class="footer">Developed by Vue &amp; Vue-router &amp; Vuex &amp; axios. Author: <a href="https://github.com/bergwhite" target="_blank" class="white">bergwhite</a></div>
   </div>
 </template>
 
@@ -42,6 +42,9 @@ a {
 }
 img {
   max-width: 100%;  /* support for mobile*/
+}
+.white {
+  color: white;
 }
 
 /* loading */
