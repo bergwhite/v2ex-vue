@@ -1,6 +1,6 @@
 <template>
   <div v-if="!this.$store.state.apiState.val" class="loading">
-    loading...
+    loading...(no more than 120 times request per hour)
   </div>
   <div v-else class="articles">
     <h1 class="tag" v-text="getTopicName() || '最新'"></h1>

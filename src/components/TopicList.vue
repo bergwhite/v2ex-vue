@@ -1,5 +1,8 @@
 <template>
-  <div class="nodes">
+  <div v-if="!this.$store.state.apiState.val" class="loading">
+    loading...(no more than 120 times request per hour)
+  </div>
+  <div v-else class="nodes">
     <ul class="nodes-cut">
       <li class="node" v-for="item in this.$store.state.apiState.val">
         <a target="_self" :href="'/#/topic/' + item.name">
