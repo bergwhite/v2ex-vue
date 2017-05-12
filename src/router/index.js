@@ -23,6 +23,11 @@ export default new Router({
       component: Topic
     },
     {
+      path: '/article/:name',
+      name: 'Article',
+      component: Topic
+    },
+    {
       path: '/user/:name',
       name: 'User',
       component: Topic

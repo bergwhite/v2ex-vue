@@ -138,6 +138,10 @@ img {
   overflow: hidden;
   padding-left: 10px;
 }
+.comm {
+  border: 0;
+  margin-left: 20px;
+}
 
 /* footer */
 

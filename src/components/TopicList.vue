@@ -1,6 +1,6 @@
 <template>
   <div v-if="!this.$store.state.apiState.val" class="loading">
-    loading...(no more than 120 times request per hour)
+    loading...(长时间未显示请刷新，API限制单IP每小时120次请求)
   </div>
   <div v-else class="nodes">
     <ul class="nodes-cut">

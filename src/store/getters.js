@@ -4,5 +4,8 @@ export default {
   },
   getApiVal (state) {
     return state.apiState.val
+  },
+  getApiValComm (state) {
+    return state.apiState.valComm
   }
 }
