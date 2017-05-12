@@ -3,9 +3,10 @@ export default {
     base: '',
     latest: '/api/topics/latest.json',
     hot: '/api/topics/hot.json',
-    node: '/api/topics/show.json?node_name=',
     nodeAll: '/api/nodes/all.json',
-    user: '/api/topics/show.json?username='
+    topic: '/api/topics/show.json?node_name=',
+    user: '/api/topics/show.json?username=',
+    comm: '/api/replies/show.json?topic_id='
   },
   apiState: {
     current: null,

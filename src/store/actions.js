@@ -1,22 +1,16 @@
 import axios from 'axios'
 
 export default {
-  getTopic ({commit, state}, argvs) {
+  getTopic ({commit, state}, type) {
+    state.apiState.val = null
     let url = null
-    if (argvs === undefined) {
+    if (type === undefined) {
       state.apiState.current = 'latest'
       url = state.api[state.apiState.current]
-    } else if (argvs === 'latest' || argvs === 'hot') {
-      state.apiState.current = argvs
-      url = state.api[state.apiState.current]
-    } else if (argvs === 'nodeAll') {
-      state.apiState.current = argvs
-      url = state.api[state.apiState.current]
     } else {
-      state.apiState.current = 'node'
-      url = state.api[state.apiState.current] + argvs
+      state.apiState.current = type
+      url = state.api[state.apiState.current]
     }
-    console.log(url)
     axios.get(url)
       .then(function (res) {
         state.apiState.val = res.data
@@ -24,5 +18,25 @@ export default {
       .catch(function (err) {
         console.log(err)
       })
+    console.log(url)
+  },
+  getTopicByParams ({commit, state}, type) {
+    state.apiState.val = null
+    let url = null
+    console.log('type: ' + type.name)
+    console.log('params: ' + type.params)
+    if (type.name !== undefined && type.params !== undefined) {
+      type.name = type.name.toLowerCase()
+      state.apiState.current = type.name
+      url = state.api[state.apiState.current] + type.params
+    }
+    axios.get(url)
+      .then(function (res) {
+        state.apiState.val = res.data
+      })
+      .catch(function (err) {
+        console.log(err)
+      })
+    console.log(url)
   }
 }

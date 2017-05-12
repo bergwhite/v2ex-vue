@@ -21,6 +21,11 @@ export default new Router({
       path: '/topic/:name',
       name: 'Topic',
       component: Topic
+    },
+    {
+      path: '/user/:name',
+      name: 'User',
+      component: Topic
     }
   ]
 })

@@ -44,6 +44,15 @@ img {
   max-width: 100%;  /* support for mobile*/
 }
 
+/* loading */
+
+.loading {
+  width: 100%;
+  height: 500px;
+  text-align: center;
+  line-height: 500px;
+}
+
 /* when select */
 
 ::selection {

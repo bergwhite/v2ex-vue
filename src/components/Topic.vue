@@ -1,5 +1,8 @@
 <template>
-  <div class="articles">
+  <div v-if="!this.$store.state.apiState.val" class="loading">
+    loading...
+  </div>
+  <div v-else class="articles">
     <h1 class="tag" v-text="getTopicName() || '最新'"></h1>
     <div class="article" v-for="topic in this.$store.state.apiState.val">
       <a :href="topic.url" target="_black">
@@ -9,7 +12,7 @@
       <div class="info">
         <img class="info-img" :src="topic.member.avatar_normal"></img>
         <div class="info-more">
-          <p class="info-user"><a :href="'https://www.v2ex.com/member/'+topic.member.username" target="_black">{{ topic.member.username }}</a></p>
+          <p class="info-user"><a :href="'/#/user/'+topic.member.username">{{ topic.member.username }}</a></p>
           <!-- <p class="info-time" v-html="'发表 '+transTime(topic.created)"></p> -->
           <p class="info-comm">回复 {{ topic.replies }}</p>
         </div>
@@ -53,9 +56,20 @@ export default {
       return this.topicNameList[this.$route.params.name] || this.$route.params.name
     },
     updateVal () {
-      this.$store.dispatch('getTopic', this.$route.params.name)
-      this.val = this.$store.getters.getApiVal
-      console.log(this.$route.params.name)
+      if (this.$route.path !== '/' && this.$route.params.name !== 'hot' && this.$route.params.name !== 'latest') {
+        this.$store.dispatch('getTopicByParams', {
+          name: this.$route.name,
+          params: this.$route.params.name
+        })
+        this.val = this.$store.getters.getApiVal
+        console.log(this.$route)
+        console.log('paramsName: ' + this.$route.params.name)
+      } else {
+        this.$store.dispatch('getTopic', this.$route.params.name)
+        this.val = this.$store.getters.getApiVal
+        console.log(this.$route)
+        console.log('paramsName: ' + this.$route.params.name)
+      }
     }
   }
 }
