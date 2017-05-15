@@ -1,11 +1,10 @@
 export default {
-  getApiState (state) {
-    return state.api[state.apiState.current]
-  },
+  // 返回最近的文章列表
   getApiVal (state) {
-    return state.apiState.val
+    return state.latestJSON.article
   },
+  // 返回最近的评论列表
   getApiValComm (state) {
-    return state.apiState.valComm
+    return state.latestJSON.comm
   }
 }

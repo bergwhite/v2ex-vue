@@ -1,10 +1,10 @@
 <template>
-  <div v-if="!this.$store.state.apiState.val" class="loading">
+  <div v-if="!this.$store.state.latestJSON.article" class="article-loading">
     loading...(长时间未显示请刷新，API限制单IP每小时120次请求)
   </div>
   <div v-else class="nodes">
     <ul class="nodes-cut">
-      <li class="node" v-for="item in this.$store.state.apiState.val">
+      <li class="node" v-for="item in this.$store.state.latestJSON.article">
         <a target="_self" :href="'/#/topic/' + item.name">
           <ul>
             <li class="node-name">{{item.name}}</li>
@@ -19,12 +19,8 @@
 <script>
   export default {
     name: 'topic-list',
-    data () {
-      return {}
-    },
     created () {
       this.$store.dispatch('getTopic', 'nodeAll')
-      this.val = this.$store.getters.getApiVal
     }
   }
 </script>

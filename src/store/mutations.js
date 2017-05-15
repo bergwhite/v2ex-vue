@@ -1,9 +1,10 @@
 export default {
-  setApiValComm (state, val) {
-    state.apiState.valComm = val
+  // 设置评论为空
+  setCommToNull (state) {
+    state.latestJSON.comm = null
   },
-  lazyLoadImg () {
-    console.log('winx')
+  // 图片懒加载函数
+  imgLazyLoad () {
     // 保存定时器的返回值
     var timeScroll = null
     // 把懒加载需要的东西封装在命名空间里
@@ -21,20 +22,14 @@ export default {
         lazyLoad()  // 满足条件则执行懒加载
       }, 100)
     }
-    console.log('winzzz')
     // 懒加载函数
     function lazyLoad () {
       if (image.linkIdCurrent >= document.images.length) {
-        console.log(image.linkIdCurrent)
-        console.log(document.images.length)
-        console.log('win1')
         return null
       } else if (image.linkAll[image.linkIdCurrent].className === undefined) {
         image.linkIdCurrent++
-        console.log('win11')
         return null
       } else if (image.linkAll[image.linkIdCurrent].className !== 'info-img') {
-        console.log('win2')
         image.linkIdCurrent++
         return null
       }
@@ -42,14 +37,12 @@ export default {
       var bodyScrollTop = document.body.scrollTop || document.documentElement.scrollTop
       // 窗口高度
       var clientHeight = document.documentElement.clientHeight
-      console.log('win2')
       if (image.linkIdCurrent < document.images.length) {
         // 如果图片已加载，则处理下一张图片
         if (image.linkAll[image.linkIdCurrent].src !== '') {
           image.linkIdCurrent++
           return lazyLoad()
         }
-        console.log('win')
         // 当前图片距顶部的距离
         var currentScrollTop = image.linkAll[image.linkIdCurrent].offsetTop
         // 当图片距顶部距离小于等于顶部距离加上窗口高度时执行

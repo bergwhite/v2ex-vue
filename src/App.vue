@@ -23,52 +23,7 @@ export default {
 
 <style>
 
-/* reset */
-
-* {
-  box-sizing: border-box;
-}
-body {
-  margin: 0;
-}
-ul,li,p {
-  margin:0;
-  padding: 0;
-}
-li {
-  list-style-type:none;
-}
-a {
-  text-decoration: none;  /* remove underline */
-  color: black;
-}
-img {
-  max-width: 100%;  /* support for mobile*/
-}
-
-/* default */
-
-.white {
-  color: white;
-}
-
-/* loading */
-
-.loading {
-  width: 100%;
-  height: 500px;
-  text-align: center;
-  line-height: 500px;
-}
-
-/* when select */
-
-::selection {
-  color: red;
-  background-color: white;
-}
-
-/* default */
+/* 字体 */
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -79,7 +34,49 @@ img {
   overflow: hidden;
 }
 
-/* nav */
+/* 样式重置 */
+
+* {
+  box-sizing: border-box; /* 使用border为边界的盒模型 */
+}
+body {
+  margin: 0;
+}
+ul,li,p {
+  margin:0;
+  padding: 0;
+}
+li {
+  list-style-type:none; /* 清除圆点 */
+}
+a {
+  text-decoration: none;  /* 移除下划线 */
+  color: black;
+}
+img {
+  max-width: 100%;  /* 适配移动端 */
+}
+
+/* 默认样式 */
+
+.white {
+  color: white;
+}
+.article-loading {
+  width: 100%;
+  height: 500px;
+  text-align: center;
+  line-height: 500px;
+}
+
+/* 文字选中时的样式 */
+
+::selection {
+  color: red;
+  background-color: white;
+}
+
+/* 导航 */
 
 .nav {
   overflow: hidden;
@@ -92,8 +89,8 @@ img {
   margin-top: 8px;  /* align the layout */
 }
 .topic {
-  width: 400px;
-  overflow:hidden;
+  width: 400px;  /* 移动端换行排版 */
+  overflow:hidden;  /* 清除浮动 */
   padding-bottom: 0px;
 }
 .topic>a {
@@ -106,59 +103,14 @@ img {
   color: white;
 }
 
-/* content */
-
-.articles {
-  margin-bottom: 60px;
-}
-.tag {
-  padding: 0 20px;
-}
-.article {
-  padding: 10px 20px;
-}
-.title,.content {
-  word-break: break-all;
-}
-.title,.content,.info {
-  padding: 20px 40px;
-}
-.title {
-  background-color: #2196f3;
-  color:white;
-}
-.content {
-  color: black;
-  background-color: white;
-  border: 1px solid #2196f3;
-  border-bottom: 0;
-}
-.info {
-  overflow: hidden;
-  border: 1px solid #2196f3;
-  border-top: 0;
-  padding-top: 0;
-}
-.info-img {
-  float: left;
-}
-.info-more {
-  overflow: hidden;
-  margin-left: 58px;
-}
-.comm {
-  border: 0;
-  margin-left: 20px;
-}
-
-/* footer */
+/* 底部 */
 
 .footer {
   background-color: #795548;
   color: white;
   padding: 20px;
   text-align: center;
-  position: fixed;
+  position: fixed;  /* 底部固定 */
   bottom: 0px;
   width: 100%;
   height: 60px;
