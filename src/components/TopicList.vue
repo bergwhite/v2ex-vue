@@ -1,7 +1,9 @@
 <template>
+  <!-- 内容状态 加载中 -->
   <div v-if="!this.$store.state.latestJSON.article" class="article-loading">
     loading...(长时间未显示请刷新，API限制单IP每小时120次请求)
   </div>
+  <!-- 内容状态 加载完成 -->
   <div v-else class="nodes">
     <ul class="nodes-cut">
       <li class="node" v-for="item in this.$store.state.latestJSON.article">

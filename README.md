@@ -2,9 +2,15 @@
 
 为了全面的熟悉Vue+Vue-router+Vuex+axios技术栈，结合V2EX的开放API开发了这个简洁版的V2EX。 [在线预览](http://47.93.252.247:8080/#/)
 
-API主要来自官方提供的以及[djyde](https://github.com/djyde/V2EX-API)整理的。
+API来自官方以及[djyde](https://github.com/djyde/V2EX-API)的整理。
 
-## 二、项目优势
+## 二、项目缺陷
+
+* 不支持翻页（没有找到翻页的API）
+* 在线演示打开较慢（为了能跨域显示最新内容，直接用npm run dev部署的）
+* ...
+
+## 三、项目优势
 
 * 界面设计简洁
 * 沉浸式的阅读体验
@@ -19,7 +25,21 @@ API主要来自官方提供的以及[djyde](https://github.com/djyde/V2EX-API)�
 * 感兴趣的欢迎给颗star ^_^
 * ...
 
-## 三、项目安装
+## 四、项目演示
+
+分类页
+
+![topic](http://atmp.oss-cn-qingdao.aliyuncs.com/img/topic.gif)
+
+文章页 & 用户页
+
+![article & user](http://atmp.oss-cn-qingdao.aliyuncs.com/img/article%26user.gif)
+
+懒加载
+
+![lazyLoad](http://atmp.oss-cn-qingdao.aliyuncs.com/img/lazyLoad.gif)
+
+## 五、项目安装
 
 项目兼容IE9+，使用项目前，请确保安装好了NodeJS。
 
@@ -32,9 +52,9 @@ npm run dev  // 运行项目
 
 ```
 
-## 四、解决方案
+## 六、解决方案
 
-### 4.1 跨域方案
+### 6.1 跨域方案
 
 通过配置代理表实现跨域
 
@@ -54,7 +74,7 @@ proxyTable: {
 
 ```
 
-### 4.2 Vuex支持IE
+### 6.2 Vuex支持IE
 
 直接引入Vuex无法在IE中显示
 
