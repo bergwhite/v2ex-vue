@@ -5,6 +5,8 @@
       <div class="topic">
         <router-link to="/">首页</router-link>
         <router-link to="/topic/hot">热门</router-link>
+        <router-link to="/topic/programmer">程序员</router-link>
+        <router-link to="/topic/jobs">酷工作</router-link>
         <router-link to="/topic">全部</router-link>
       </div>
     </div>
@@ -23,11 +25,11 @@ export default {
 
 /* reset */
 
-body {
-  margin: 0;
-}
 * {
   box-sizing: border-box;
+}
+body {
+  margin: 0;
 }
 ul,li,p {
   margin:0;
@@ -37,12 +39,15 @@ li {
   list-style-type:none;
 }
 a {
-  text-decoration: none;
+  text-decoration: none;  /* remove underline */
   color: black;
 }
 img {
   max-width: 100%;  /* support for mobile*/
 }
+
+/* default */
+
 .white {
   color: white;
 }
@@ -87,7 +92,7 @@ img {
   margin-top: 8px;  /* align the layout */
 }
 .topic {
-  width: 200px;
+  width: 400px;
   overflow:hidden;
   padding-bottom: 0px;
 }
@@ -139,7 +144,7 @@ img {
 }
 .info-more {
   overflow: hidden;
-  padding-left: 10px;
+  margin-left: 58px;
 }
 .comm {
   border: 0;

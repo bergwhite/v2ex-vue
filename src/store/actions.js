@@ -15,6 +15,7 @@ export default {
     axios.get(url)
       .then(function (res) {
         state.apiState.val = res.data
+        commit('lazyLoadImg')
       })
       .catch(function (err) {
         console.log(err)
@@ -34,6 +35,7 @@ export default {
     axios.get(url)
       .then(function (res) {
         state.apiState.val = res.data
+        commit('lazyLoadImg')
       })
       .catch(function (err) {
         console.log(err)
@@ -53,6 +55,7 @@ export default {
     axios.get(url)
       .then(function (res) {
         state.apiState.valComm = res.data
+        commit('lazyLoadImg')
       })
       .catch(function (err) {
         console.log(err)

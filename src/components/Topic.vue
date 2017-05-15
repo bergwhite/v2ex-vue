@@ -10,7 +10,7 @@
       </a>
       <div class="content" v-html="compiledMarkdown(topic.content)"></div>
       <div class="info">
-        <img class="info-img" :src="topic.member.avatar_normal"></img>
+        <img class="info-img" :data-src="topic.member.avatar_normal"></img>
         <div class="info-more">
           <p class="info-user"><a :href="'/#/user/'+topic.member.username">{{ topic.member.username }}</a></p>
           <!-- <p class="info-time" v-html="'发表 '+transTime(topic.created)"></p> -->
@@ -20,7 +20,7 @@
     </div>
     <div v-if="this.$store.state.apiState.valComm">
       <div class="info comm" v-for="comm in this.$store.state.apiState.valComm">
-        <img class="info-img" :src="comm.member.avatar_normal"></img>
+        <img class="info-img" :data-src="comm.member.avatar_normal"></img>
         <div class="info-more">
           <p class="info-user"><a :href="'/#/user/'+comm.member.username">{{ comm.member.username }}</a></p>
           <!-- <p class="info-time" v-html="'发表 '+transTime(comm.created)"></p> -->
@@ -40,7 +40,9 @@ export default {
       type: this.$route.params.name,
       topicNameList: {
         latest: '最新',
-        hot: '热门'
+        hot: '热门',
+        programmer: '程序员',
+        jobs: '酷工作'
       }
     }
   },
@@ -49,6 +51,9 @@ export default {
     this.val = this.$store.getters.getApiVal
     console.log('updated')
     console.log(this.val)
+  },
+  updated () {
+    this.$store.commit('lazyLoadImg')
   },
   watch: {
     '$route': 'updateVal'
@@ -72,6 +77,7 @@ export default {
       }
     },
     updateVal () {
+      this.$store.commit('setApiValComm', null)
       if (this.$route.name === 'Article') {
         this.$store.dispatch('getTopicByParams', {
           name: this.$route.name,
