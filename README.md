@@ -1,8 +1,12 @@
 ## 一、开发背景
 
-为了全面的熟悉Vue+Vue-router+Vuex+axios技术栈，结合V2EX的开放API开发了这个简洁版的V2EX。 [在线预览](http://47.93.252.247:8080/#/) （为了实现跨域，直接npm run dev部署的，首次加载略慢）
+为了全面的熟悉Vue+Vue-router+Vuex+axios技术栈，结合V2EX的开放API开发了这个简洁版的V2EX。 [在线预览](https://47.93.252.247/#/) 
 
 API来自官方以及[djyde](https://github.com/djyde/V2EX-API)的整理。
+
+在线访问请节制使用，跨域是通过Nginx配置反向代理实现的，所以每小时120次API请求是算在服务器头上的（没啥说的了）。
+
+当页面刷新后也无法显示，请查看控制台的异步请求是否返回403。如果是的话，要么你等等（很久），要么你clone这个库到本地去玩。
 
 ## 二、项目演示
 
@@ -46,28 +50,7 @@ API来自官方以及[djyde](https://github.com/djyde/V2EX-API)的整理。
 ## 四、项目缺陷
 
 * 不支持翻页（没有找到翻页的API）
-* 在线演示首次加载较慢（为了能跨域显示最新内容，直接用npm run dev部署的）
-* 打算使用nginx部署，但是在代理的时候遇到了问题（https部署成功，反向代理失败）
-* 配置文件在下面，希望大家帮忙看看问题在哪
 * ...
-
-```
-
-server {
-    listen    80;
-    listen    443;
-    server_name localhost;
-    ssl on;
-    ssl_certificate /etc/nginx/ssl/nginx.crt;
-    ssl_certificate_key /etc/nginx/ssl/nginx.key;
-    location /api/ {
-        proxy_set_header  X-Real-IP  $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_pass https://www.v2ex.com/api/;
-    }
-}
-
-```
 
 ## 五、项目安装
 
@@ -84,9 +67,9 @@ npm run dev  // 运行项目
 
 ## 六、解决方案
 
-### 6.1 跨域方案
+### 6.1 本地开发跨域方案
 
-本地开发中，通过配置代理表实现跨域
+本地开发中，通过配置代理表实现跨域。
 
 ```
 
@@ -104,9 +87,9 @@ proxyTable: {
 
 ```
 
-### 6.2 Vuex支持IE
+### 6.2 让Vuex支持IE
 
-直接引入Vuex无法在IE中显示，引入babel-polyfill来兼容IE
+直接引入Vuex无法在IE中显示，需要引入babel-polyfill。
 
 ```
 
@@ -115,6 +98,36 @@ npm install babel-polyfill --save-dev  // 安装babel-polyfill
 src/main.js
 ---------------
 import 'babel-polyfill'  // 在vue主文件中导入
+
+```
+
+### 6.3 在线部署跨域方案
+
+通过配置Nginx反向代理实现跨域。由于是代理HTTPS，所以你需要生成SSL证书。
+
+```
+
+/etc/nginx/nginx.conf
+------------------------------
+http {
+    server {
+        listen    80;
+        listen    443;
+        server_name www.v2ex.com;
+        ssl on;
+        ssl_certificate /etc/nginx/ssl/nginx.crt;
+        ssl_certificate_key /etc/nginx/ssl/nginx.key;
+        location / {
+            root   /usr/share/nginx/html;
+            index  index.html;
+        }
+        location /api/ {
+            proxy_set_header  X-Real-IP  $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_pass https://www.v2ex.com/api/;
+        }
+    }
+}
 
 ```
 
