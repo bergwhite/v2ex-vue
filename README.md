@@ -4,7 +4,31 @@
 
 API来自官方以及[djyde](https://github.com/djyde/V2EX-API)的整理。
 
-## 二、项目优势
+## 二、项目演示
+
+分类页
+
+![topic](http://atmp.oss-cn-qingdao.aliyuncs.com/img/topic.gif)
+
+文章页 & 用户页
+
+![article & user](http://atmp.oss-cn-qingdao.aliyuncs.com/img/article%26user.gif)
+
+懒加载
+
+![lazyLoad](http://atmp.oss-cn-qingdao.aliyuncs.com/img/lazyLoad.gif)
+
+> 路由
+
+首页默认显示最新的帖子
+
+* 首页 /
+* 全部 /topic
+* 分类 /topic/:name
+* 文章 /article/:id
+* 用户 /user/:name
+
+## 三、项目优势
 
 * 界面设计简洁
 * 沉浸式的阅读体验
@@ -19,7 +43,7 @@ API来自官方以及[djyde](https://github.com/djyde/V2EX-API)的整理。
 * 感兴趣的欢迎给颗star ^_^
 * ...
 
-## 三、项目缺陷
+## 四、项目缺陷
 
 * 不支持翻页（没有找到翻页的API）
 * 在线演示首次加载较慢（为了能跨域显示最新内容，直接用npm run dev部署的）
@@ -44,30 +68,6 @@ server {
 }
 
 ```
-
-## 四、项目演示
-
-> 路由
-
-首页默认显示最新的帖子
-
-* 首页 /
-* 全部 /topic
-* 分类 /topic/:name
-* 文章 /article/:id
-* 用户 /user/:name
-
-分类页
-
-![topic](http://atmp.oss-cn-qingdao.aliyuncs.com/img/topic.gif)
-
-文章页 & 用户页
-
-![article & user](http://atmp.oss-cn-qingdao.aliyuncs.com/img/article%26user.gif)
-
-懒加载
-
-![lazyLoad](http://atmp.oss-cn-qingdao.aliyuncs.com/img/lazyLoad.gif)
 
 ## 五、项目安装
 
