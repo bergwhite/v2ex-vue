@@ -4,17 +4,11 @@
 
 API来自官方以及[djyde](https://github.com/djyde/V2EX-API)的整理。
 
-## 二、项目缺陷
-
-* 不支持翻页（没有找到翻页的API）
-* 在线演示打开较慢（为了能跨域显示最新内容，直接用npm run dev部署的）
-* ...
-
-## 三、项目优势
+## 二、项目优势
 
 * 界面设计简洁
 * 沉浸式的阅读体验
-* 可以按文章/用户/分类浏览
+* 可以按分类/文章/用户浏览
 * 在文章页显示用户评论
 * 图片使用懒加载模式
 * 总之，实现了你看帖所需要的一切
@@ -25,7 +19,43 @@ API来自官方以及[djyde](https://github.com/djyde/V2EX-API)的整理。
 * 感兴趣的欢迎给颗star ^_^
 * ...
 
+## 三、项目缺陷
+
+* 不支持翻页（没有找到翻页的API）
+* 在线演示打开较慢（为了能跨域显示最新内容，直接用npm run dev部署的）
+* 打算使用nginx部署，但是在代理的时候遇到了问题（https部署成功，反向代理失败）
+* 配置文件在下面，希望大家帮忙看看问题在哪
+* ...
+
+```
+
+server {
+    listen    80;
+    listen    443;
+    server_name localhost;
+    ssl on;
+    ssl_certificate /etc/nginx/ssl/nginx.crt;
+    ssl_certificate_key /etc/nginx/ssl/nginx.key;
+    location /api/ {
+        proxy_set_header  X-Real-IP  $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass https://www.v2ex.com/api/;
+    }
+}
+
+```
+
 ## 四、项目演示
+
+> 路由
+
+首页默认显示最新的帖子
+
+* 首页 /
+* 全部 /topic
+* 分类 /topic/:name
+* 文章 /article/:id
+* 用户 /user/:name
 
 分类页
 
@@ -56,7 +86,7 @@ npm run dev  // 运行项目
 
 ### 6.1 跨域方案
 
-通过配置代理表实现跨域
+本地开发中，通过配置代理表实现跨域
 
 ```
 
@@ -76,7 +106,7 @@ proxyTable: {
 
 ### 6.2 Vuex支持IE
 
-直接引入Vuex无法在IE中显示，需要引入babel-polyfill
+直接引入Vuex无法在IE中显示，引入babel-polyfill来兼容IE
 
 ```
 
