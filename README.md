@@ -1,6 +1,6 @@
 ## 一、开发背景
 
-为了全面的熟悉Vue+Vue-router+Vuex+axios技术栈，结合V2EX的开放API开发了这个简洁版的V2EX。 [在线预览](http://47.93.252.247:8080/#/)
+为了全面的熟悉Vue+Vue-router+Vuex+axios技术栈，结合V2EX的开放API开发了这个简洁版的V2EX。 [在线预览](http://47.93.252.247:8080/#/) （为了实现跨域，直接npm run dev部署的，首次加载略慢）
 
 API来自官方以及[djyde](https://github.com/djyde/V2EX-API)的整理。
 
