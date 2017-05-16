@@ -117,3 +117,5 @@ src/main.js
 import 'babel-polyfill'  // 在vue主文件中导入
 
 ```
+
+PS：正在找工作，北京有坑的欢迎联系
