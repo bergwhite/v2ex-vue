@@ -76,7 +76,7 @@ proxyTable: {
 
 ### 6.2 Vuex支持IE
 
-直接引入Vuex无法在IE中显示
+直接引入Vuex无法在IE中显示，需要引入babel-polyfill
 
 ```
 
