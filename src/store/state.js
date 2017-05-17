@@ -14,5 +14,10 @@ export default {
     current: null,  // 最近一次请求的api类型
     article: null,
     comm: null
-  }
+  },
+  articleLoadState: {
+    default: 'loading...(长时间未显示请刷新，API限制单IP每小时120次请求)',
+    current: 'loading...(长时间未显示请刷新，API限制单IP每小时120次请求)'
+  },
+  remainRequest: null
 }

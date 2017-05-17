@@ -10,8 +10,9 @@
         <router-link to="/topic">全部</router-link>
       </div>
     </div>
+    <p class="request-tip">当前页面剩余请求次数：{{ this.$store.state.remainRequest }}</p>
     <router-view></router-view>
-    <div class="footer">Developed by Vue &amp; Vue-router &amp; Vuex &amp; axios. Author: <a href="https://github.com/bergwhite" target="_blank" class="white">bergwhite</a></div>
+    <div class="footer">Developed by Vue &amp; Vue-router &amp; Vuex &amp; axios. Author: <a href="https://github.com/bergwhite" target="_blank" class="blue">bergwhite</a></div>
   </div>
 </template>
 
@@ -59,8 +60,8 @@ img {
 
 /* 默认样式 */
 
-.white {
-  color: white;
+.blue {
+  color: #2196f3;
 }
 .article-loading {
   width: 100%;
@@ -101,6 +102,10 @@ img {
 .topic>a:hover {
   background-color: #2196f3;
   color: white;
+}
+
+.request-tip {
+  padding-left: 20px;
 }
 
 /* 底部 */

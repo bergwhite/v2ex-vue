@@ -7,6 +7,7 @@ export default {
     // 清空文章和评论
     state.latestJSON.comm = null
     state.latestJSON.article = null
+    state.articleLoadState.current = state.articleLoadState.default  // 重置加载文章的提示
     let url = null
     console.log('getTopic > type: ' + type)
     if (type === undefined) {
@@ -21,8 +22,15 @@ export default {
     // 发起异步请求
     axios.get(url)
       .then(function (res) {
-        state.latestJSON.article = res.data  // 存储返回的文章
-        commit('imgLazyLoad') // 渲染可视界面的图片
+        console.log(res)
+        if (res.status === 200) {
+          state.latestJSON.article = res.data  // 存储返回的文章
+          state.remainRequest = res.headers['x-rate-limit-remaining']  // 更新剩余请求数
+          commit('imgLazyLoad') // 渲染可视界面的图片
+        } else if (res.status === 403) {
+          // 当返回状态为403时，显示友好提示
+          state.articleLoadState.current = '请求次数达到限制，感兴趣的可以下到本地进行使用哦'
+        }
       })
       .catch(function (err) {
         console.log(err)
@@ -35,6 +43,7 @@ export default {
     // 清空文章和评论
     state.latestJSON.article = null
     state.latestJSON.article = null
+    state.articleLoadState.current = state.articleLoadState.default  // 重置加载文章的提示
     let url = null
     console.log('getTopicByParams > type: ' + type.name)
     console.log('getTopicByParams > params: ' + type.params)
@@ -47,8 +56,14 @@ export default {
     // 发起异步请求
     axios.get(url)
       .then(function (res) {
-        state.latestJSON.article = res.data // 存储返回的文章
-        commit('imgLazyLoad') // 渲染可视界面的图片
+        if (res.status === 200) {
+          state.latestJSON.article = res.data // 存储返回的文章
+          state.remainRequest = res.headers['x-rate-limit-remaining']  // 更新剩余请求数
+          commit('imgLazyLoad') // 渲染可视界面的图片
+        } else if (res.status === 403) {
+          // 当返回状态为403时，显示友好提示
+          state.articleLoadState.current = '请求次数达到限制，感兴趣的可以下到本地进行使用哦 <a href="https://github.com/bergwhite/v2ex-vue">v2ex-vue</a>'
+        }
       })
       .catch(function (err) {
         console.log(err)
