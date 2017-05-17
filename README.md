@@ -40,6 +40,8 @@ API来自官方以及[djyde](https://github.com/djyde/V2EX-API)的整理。
 
 目录是cmd生成的（稍微进行了一下修改，默认的太难看了） tree /f >tree.txt
 
+```
+
 ├─components
 │    Topic.vue  // 某一分类下的文章或某个用户的全部文章
 │    TopicList.vue  // 全部分类
@@ -53,6 +55,8 @@ API来自官方以及[djyde](https://github.com/djyde/V2EX-API)的整理。
 │    index.js  // Vuex
 ├─ App.vue  // 主页面
 ├─ main.js  // Vue主文件
+
+```
 
 ## 三、项目优势
 
