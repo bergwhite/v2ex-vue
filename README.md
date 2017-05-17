@@ -22,6 +22,10 @@ API来自官方以及[djyde](https://github.com/djyde/V2EX-API)的整理。
 
 ![lazyLoad](http://atmp.oss-cn-qingdao.aliyuncs.com/img/lazyLoad.gif)
 
+移动端
+
+![mobile](http://atmp.oss-cn-qingdao.aliyuncs.com/img/mobile.gif)
+
 > 路由
 
 首页默认显示最新的帖子
