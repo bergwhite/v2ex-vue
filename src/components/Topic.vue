@@ -1,55 +1,57 @@
 <template>
-  <!-- 内容状态 加载中 -->
-  <div v-if="!this.$store.state.latestJSON.article" class="article-loading" v-html="this.$store.state.articleLoadState.current">
-  </div>
-  <!-- 内容状态 加载完成 -->
-  <div v-else class="articles">
-    <!-- 渲染 分类 -->
-    <h1 class="tag" v-text="renderTopicName() || '最新'"></h1>
-    <!-- 从Vuex中加载文章 -->
-    <div class="article" v-for="topic in this.$store.state.latestJSON.article">
-      <!-- 渲染 标题 -->
-      <a :href="'/#/article/' + topic.id">
-        <p class="title">{{ topic.title }}</p>
-      </a>
-      <!-- 渲染 内容 -->
-      <div class="content" v-html="compiledMarkdown(topic.content)"></div>
-      <div class="info">
-        <!-- 渲染 头像 -->
-        <img class="info-img" :data-src="topic.member.avatar_normal"></img>
-        <div class="info-more">
-          <!-- 渲染 用户名 -->
-          <p class="info-user"><a :href="'/#/user/'+topic.member.username">{{ topic.member.username }}</a></p>
-          <!-- 渲染 评论 -->
-          <p class="info-comm">回复 {{ topic.replies }}</p>
+  <transition name="fade" mode="in-out">
+    <!-- 内容状态 加载中 -->
+    <div v-if="!this.$store.state.latestJSON.article" class="article-loading" v-html="this.$store.state.articleLoadState.current">
+    </div>
+    <!-- 内容状态 加载完成 -->
+    <div v-else class="articles">
+      <!-- 渲染 分类 -->
+      <h1 class="tag" v-text="renderTopicName() || '最新'"></h1>
+      <!-- 从Vuex中加载文章 -->
+      <div class="article" v-for="topic in this.$store.state.latestJSON.article">
+        <!-- 渲染 标题 -->
+        <a :href="'/#/article/' + topic.id">
+          <p class="title">{{ topic.title }}</p>
+        </a>
+        <!-- 渲染 内容 -->
+        <div class="content" v-html="compiledMarkdown(topic.content)"></div>
+        <div class="info">
+          <!-- 渲染 头像 -->
+          <img class="info-img" :data-src="topic.member.avatar_normal"></img>
+          <div class="info-more">
+            <!-- 渲染 用户名 -->
+            <p class="info-user"><a :href="'/#/user/'+topic.member.username">{{ topic.member.username }}</a></p>
+            <!-- 渲染 评论 -->
+            <p class="info-comm">回复 {{ topic.replies }}</p>
+          </div>
+        </div>
+      </div>
+      <!-- 评论状态 不加载 -->
+      <div v-if="this.$store.state.latestJSON.comm === null"></div>
+      <!-- 评论状态 加载中 -->
+      <div v-else-if="this.$store.state.latestJSON.comm === 'loading'" class="comm-state">
+        评论加载中
+      </div>
+      <!-- 评论状态 为空 -->
+      <div v-else-if="this.$store.state.latestJSON.comm.length === 0" class="comm-state">
+        评论为空
+      </div>
+      <!-- 评论状态 加载完成 -->
+      <div v-else>
+        <!-- 从Vuex中加载评论 -->
+        <div class="info comm" v-for="comm in this.$store.state.latestJSON.comm">
+          <!-- 渲染 头像 -->
+          <img class="info-img" :data-src="comm.member.avatar_normal"></img>
+          <div class="info-more">
+            <!-- 渲染 用户名 -->
+            <p class="info-user"><a :href="'/#/user/'+comm.member.username">{{ comm.member.username }}</a></p>
+            <!-- 渲染 评论 -->
+            <p class="info-comm">{{ comm.content }}</p>
+          </div>
         </div>
       </div>
     </div>
-    <!-- 评论状态 不加载 -->
-    <div v-if="this.$store.state.latestJSON.comm === null"></div>
-    <!-- 评论状态 加载中 -->
-    <div v-else-if="this.$store.state.latestJSON.comm === 'loading'" class="comm-state">
-      评论加载中
-    </div>
-    <!-- 评论状态 为空 -->
-    <div v-else-if="this.$store.state.latestJSON.comm.length === 0" class="comm-state">
-      评论为空
-    </div>
-    <!-- 评论状态 加载完成 -->
-    <div v-else>
-      <!-- 从Vuex中加载评论 -->
-      <div class="info comm" v-for="comm in this.$store.state.latestJSON.comm">
-        <!-- 渲染 头像 -->
-        <img class="info-img" :data-src="comm.member.avatar_normal"></img>
-        <div class="info-more">
-          <!-- 渲染 用户名 -->
-          <p class="info-user"><a :href="'/#/user/'+comm.member.username">{{ comm.member.username }}</a></p>
-          <!-- 渲染 评论 -->
-          <p class="info-comm">{{ comm.content }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  </transition>
 </template>
 
 <script>

@@ -1,20 +1,22 @@
 <template>
-  <!-- 内容状态 加载中 -->
-  <div v-if="!this.$store.state.latestJSON.article" class="article-loading" v-html="this.$store.state.articleLoadState.current">
-  </div>
-  <!-- 内容状态 加载完成 -->
-  <div v-else class="nodes">
-    <ul class="nodes-cut">
-      <li class="node" v-for="item in this.$store.state.latestJSON.article">
-        <a target="_self" :href="'/#/topic/' + item.name">
-          <ul>
-            <li class="node-name">{{item.name}}</li>
-            <li class="node-info" v-html="item.header !== null ? item.header : '介绍为空'"></li>
-          </ul>
-        </a>
-      </li>
-    </ul>
-  </div>
+  <transition name="fade" mode="in-out">
+    <!-- 内容状态 加载中 -->
+    <div v-if="!this.$store.state.latestJSON.article" class="article-loading" v-html="this.$store.state.articleLoadState.current">
+    </div>
+    <!-- 内容状态 加载完成 -->
+    <div v-else class="nodes">
+      <ul class="nodes-cut">
+        <li class="node" v-for="item in this.$store.state.latestJSON.article">
+          <a target="_self" :href="'/#/topic/' + item.name">
+            <ul>
+              <li class="node-name">{{item.name}}</li>
+              <li class="node-info" v-html="item.header !== null ? item.header : '介绍为空'"></li>
+            </ul>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </transition>
 </template>
 
 <script>
