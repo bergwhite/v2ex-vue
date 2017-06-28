@@ -1,3 +1,4 @@
+// import debounce from 'lodash.debounce'
 export default {
   // 设置评论为空
   setCommToNull (state) {
@@ -60,5 +61,23 @@ export default {
     }
     // 执行懒加载函数，下载首屏图片
     lazyLoad()
+  },
+  // 节点列表过滤
+  flushNodeList (state, type) {
+    console.log(`query: ${type.query}`)
+    const article = state.latestJSON.article
+    // 存储过滤后的数据到新列表
+    function toNewList () {
+      state.latestJSON.filterArticle = article.filter(function (item) {
+        return item.name.toLowerCase().indexOf(type.query.toString().toLowerCase()) !== -1
+      })
+    }
+    if (article !== undefined && article !== null) {
+      toNewList()
+      // TODO: BUG / works like interval
+      // debounce(toNewList, 1000)()
+    } else {
+      console.log('article is loading')
+    }
   }
 }
