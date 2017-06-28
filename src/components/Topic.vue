@@ -10,9 +10,20 @@
       <!-- 从Vuex中加载文章 -->
       <div class="article" v-for="topic in this.$store.state.latestJSON.article">
         <!-- 渲染 标题 -->
-        <a :href="'/#/article/' + topic.id">
-          <p class="title">{{ topic.title }}</p>
-        </a>
+        <div class="title">
+          <ul class="title-wrap">
+            <li>
+              <a :href="'/#/topic/' + topic.node.name">
+                <p class="title-node">[{{ topic.node.title }}]</p>
+              </a>
+            </li>
+            <li>
+              <a :href="'/#/article/' + topic.id">
+                <p class="title-article">{{ topic.title }}</p>
+              </a>
+            </li>
+          </ul>
+        </div>
         <!-- 渲染 内容 -->
         <div class="content" v-html="compiledMarkdown(topic.content)"></div>
         <div class="info">
@@ -163,6 +174,19 @@ export default {
 .title {
   background-color: #2196f3;
   color:white;
+}
+.title-wrap  {
+  overflow: hidden;
+}
+.title-node {
+  color: #ffeb3b;
+  margin-right: 10px;
+}
+.title-article {
+  color: white;
+}
+.title-node, .title-article {
+  float: left;
 }
 
 /* 文章内容 */

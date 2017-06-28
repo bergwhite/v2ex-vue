@@ -11,7 +11,7 @@
         <li class="node" v-for="item in getNodeList" :key="item.id">
           <a target="_self" :href="'/#/topic/' + item.name">
             <ul>
-              <li class="node-name">{{item.name}}</li>
+              <li class="node-name">{{item.title}}</li>
               <li class="node-info" v-html="item.header !== null ? item.header : '介绍为空'"></li>
             </ul>
           </a>
