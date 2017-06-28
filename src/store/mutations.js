@@ -69,7 +69,7 @@ export default {
     // 存储过滤后的数据到新列表
     function toNewList () {
       state.latestJSON.filterArticle = article.filter(function (item) {
-        return item.name.toLowerCase().indexOf(type.query.toString().toLowerCase()) !== -1
+        return item.title.toLowerCase().indexOf(type.query.toString().toLowerCase()) !== -1
       })
     }
     if (article !== undefined && article !== null) {
